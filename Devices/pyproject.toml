@@ -1,0 +1,20 @@
+[project]
+name = "devices"
+version = "0.1.0"
+description = "SmartHome Devices Service"
+authors = [
+    {name = "DmitryProtasevich", email = "protas.dmitry4@yandex.ru"}
+]
+dependencies = [
+    "django-ninja>=1.5.0,<2.0.0",
+    "django>=5.2.8,<6.0.0",
+    "python-dotenv>=1.0.0,<2.0.0",
+    "uvicorn>=0.38.0,<0.39.0",
+    "docker>=7.1.0,<8.0.0",
+    "psycopg2-binary>=2.9.0,<3.0.0",
+]
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
