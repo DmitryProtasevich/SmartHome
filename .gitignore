@@ -141,3 +141,4 @@ redis_data
 .vscode/
 
 logs/
+Makefile
