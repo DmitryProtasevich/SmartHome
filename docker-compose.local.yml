@@ -36,11 +36,27 @@ services:
     networks:
     - home
 
+  executor:
+    container_name: executor
+    image: executor-app
+    restart: always
+    build: 
+      context: ./Executor
+      dockerfile: Dockerfile
+    env_file:
+    - .env
+    depends_on:
+      devices:
+        condition: service_started
+    networks:
+    - home
+
   nginx:
     container_name: smart-home-proxy
     build: ./Proxy
     ports:
       - "80:80"
+      - "81:81"
     volumes:
       - ./Proxy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
