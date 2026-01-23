@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'devices.apps.DevicesConfig',
     'internal.apps.InternalConfig',
+    'producer.apps.ProducerConfig',
 ]
 
 MIDDLEWARE = [
