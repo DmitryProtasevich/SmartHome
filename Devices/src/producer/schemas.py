@@ -1,10 +1,15 @@
 from ninja import Schema
 
 
+class CommandSchema(Schema):
+    device_uuid: str
+    command: str
+
+
 class KafkaMessage(Schema):
     topic: str
-    message: str
     key: str
+    value: CommandSchema
 
 
 class KafkaResponse(Schema):

@@ -1,4 +1,4 @@
-from config.kafka import send_one_message
+from config.kafka.producer import send_one_message
 from ninja import Router
 
 from producer.schemas import KafkaMessage, KafkaResponse
@@ -19,19 +19,17 @@ async def send_message(
 ) -> KafkaResponse:
     """Отправляет сообщения в кафку."""
     try:
-        topic = request_data.topic
-        key = request_data.key
-
+        payload = request_data.value.dict()
         await send_one_message(
-            topic,
-            request_data.message,
-            key
+            topic=request_data.topic,
+            message=payload,
+            key=request_data.key,
         )
         return KafkaResponse(
             status="success",
-            message=f"Сообщение отправлено в топик {topic}",
-            topic=topic,
-            key=key
+            message=f"Сообщение отправлено в топик {request_data.topic}",
+            topic=request_data.topic,
+            key=request_data.key,
         )
     except Exception as e:
         logger.error(f"Ошибка при отправке: {e}")
