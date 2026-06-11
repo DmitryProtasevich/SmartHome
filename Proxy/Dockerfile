@@ -1,2 +1,6 @@
-FROM nginx:1.25.4-alpine
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+FROM openresty/openresty:alpine-fat
+
+RUN luarocks install lua-resty-openidc
+RUN luarocks install lua-resty-session
+
+COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
