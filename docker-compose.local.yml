@@ -41,6 +41,12 @@ services:
     build: ./Proxy
     ports:
       - "80:80"
+    environment:
+      KEYCLOAK_REALM: ${KEYCLOAK_REALM}
+      KEYCLOAK_CLIENT_ID: ${KEYCLOAK_CLIENT_ID}
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_CLIENT_SECRET}
+      KEYCLOAK_DISCOVERY: ${KEYCLOAK_DISCOVERY}
+      KEYCLOAK_REDIRECT_URI: ${KEYCLOAK_REDIRECT_URI}
     depends_on:
       - devices
       - keycloak
