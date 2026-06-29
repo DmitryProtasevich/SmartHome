@@ -36,6 +36,21 @@ services:
     networks:
     - home
 
+  executor:
+    container_name: executor
+    image: executor-app
+    restart: always
+    build: 
+      context: ./Executor
+      dockerfile: Dockerfile
+    env_file:
+    - .env
+    depends_on:
+      devices:
+        condition: service_started
+    networks:
+    - home
+
   nginx:
     container_name: smart-home-proxy
     build: ./Proxy
