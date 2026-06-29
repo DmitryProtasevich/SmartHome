@@ -53,7 +53,7 @@ services:
 
   nginx:
     container_name: smart-home-proxy
-    build: ./Proxy
+    build: ./Nginx
     ports:
       - "80:80"
     environment:
